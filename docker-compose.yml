@@ -5,12 +5,12 @@ version: "3.9"
 services:
   db:
     # コンテナ名をmysqlに設定
-    container_name: MySQL
+    container_name: mysql
     # MySQLのDockerfileをビルドする
     build:
       # ビルドコンテキストはカレントディレクトリ
       context: .
-      dockerfile: Docker/MySQL/Dockerfile
+      dockerfile: Docker/mysql/Dockerfile
     # M1チップでも動くように
     # Intel Macの場合あってもなくても動く
     platform: linux/x86_64
@@ -39,12 +39,12 @@ services:
 
   app:
     # コンテナ名をFlaskに設定
-    container_name: Flask
+    container_name: flask
     # FlaskのDockerfileをビルドする
     build:
       # ビルドコンテキストはカレントディレクトリ
       context: .
-      dockerfile: Docker/Flask/Dockerfile
+      dockerfile: Docker/flask/Dockerfile
     # ボリュームを指定
     # ローカルのカレントディレクトリをコンテナの/codeにマウントする
     volumes:
