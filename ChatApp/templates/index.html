@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/style.css">
+    <title>Login</title>
+  </head>
+  <body>
+    <header>
+        <img src="../static/img/logo.png" alt="COMPANY" width="200" height="100">
+        <div class="header-devide">
+          <div id="loginMessage">JavaScriptが実行されませんでした。管理者にお問い合わせください。</div>
+          <img src="../static/img/logout.png" alt="logout" width="70" height="23">
+        </div>
+        
+    </header>
+    <main>
+      <div class="l-leftNav">
+        <div class="l-leftNav__nav">
+
+          <div class="kyc-search-bar">
+            <img src="../static/img/search.png" alt="search" width="20" height="20">
+            <input class="kyc-search-box" type="text" placeholder="検索" autocomplete="off" size="72">
+          </div>
+
+          <div>
+
+            <ul id="getChatroom"{{ channel.name }}>
+              <!-- JavaScript によってリスト項目が追加される -->
+            </ul>
+
+          </div>
+
+        </div>
+
+        <div class="bulltinspace">
+          <div class="bulltin-header">
+            <h3>掲示板</h3>
+            <button>掲示板管理</button>
+          </div>
+          <ul id="bulltinboard">
+            <!-- JavaScript によってリスト項目が追加される -->
+          </ul>
+
+        </div>
+
+      </div>
+      
+      <div class="roomlist-createroom-button">
+        <a href = ./createroom.html>+</a>
+      </div>
+
+    </main>
+
+    <script src="../static/js/home.js"></script>
+  </body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="../static/css/chatroom.css">
+  <title>Chat</title>
+</head>
+<body>
+  <header>
+    <div id="chat_header">
+      <!--ステータス-->
+      <a class="chat_return_link" href="https://saruwakakun.com/">
+          <img src="../static/img/ruturn_button.png" alt="search" width="30" height="30" >
+      </a> 
+      <div id="room_name">room1</div>
+    </div>
+  </header>
+  <!-- 青い背景色になってるチャットアプリの画面 -->
+  <div id="chat_message_area"> <!-- このjs用idは使っていない？ -->
+    <ul id="chat_message_text">
+    </ul>
+  </div>
+  <footer class="chat_input">
+      <textarea id="inputMessage" type="text" class="form_control" placeholder="メッセージを入力してください" autofocus></textarea>
+      <button id="sendBtn" class="btn_primary" type="button">送信</button>
+  </footer>
+  <script type="text/javascript" src="chatroom.js"></script>
+
+</body>
+</html>

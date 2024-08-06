@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/style.css">
+    <title>Login</title>
+  </head>
+
+<body class="error">
+
+    <header>
+        <img src="../static/img/logo.png" alt="COMPANY" width="200" height="100">
+    </header>
+
+    <main>
+      <h3>SORRY</h3>
+      <p>{{ error_message }}</p>
+      <button>
+          <a href="{{ url_for('index') }}">戻る</a>
+      </button>
+    </main>
+  </body>
