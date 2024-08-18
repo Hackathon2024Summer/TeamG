@@ -2,13 +2,6 @@
     height:590px;
     width: 100%;
 }
-
-#chat_messages_room{
-    height: 100%;/*your_containerに対して100%になる */
-    width: 100%;/*your_containerに対して100%になる */
-    background-color: #eee;
-}
-
 /* ヘッダー部分② */
 #chat_header {
     padding: 6px;
@@ -18,47 +11,55 @@
     border: 1px solid #ccc;
     display: flex;
 }
+#room_name{
+    margin: auto;
+}
 /* タイムライン部分③ */
 #chat_message_text {
     overflow: auto;/* スクロールを効かせつつ、メッセージがタイムラインの外に出ないようにする */
-    height: 100%;/*テキストエリアが下に張り付く様にする*/
-    border-right: 1px solid #ddd;
-    border-left: 1px solid #ddd;
+    height:99%;/*テキストエリアが下に張り付く様にする*/
     background-color: #eee;
     box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.2) inset;/*ヘッダーの下に影を入れる*/
 }
 
-#chat_massage_text {
-    margin: 0px;
-    padding: 0 14px;/*吹き出しがタイムラインの側面にひっつかない様に隙間を開ける*/
-    font-size: 16px;
-    word-wrap: break-word;/* 吹き出し内で自動で改行 */
-    white-space: normal;/*指定widthに合わせて、文字を自動的に改行*/
-
-}
-
-.box_left{
+.other_massege_box{
     color: #333;/*テキストを黒にする*/
     background: #fff;
     border: 2px solid #13178E;
     border-radius: 30px 30px 30px 0px;/*左下だけ尖らせて吹き出し感を出す*/
-    margin-right: 50px;/*左側の発言だとわかる様に、吹き出し右側に隙間を入れる*/
+    margin: 0px 10px 10px 10px;
     float: left;/*吹き出しをbms_messagesに対して左寄せ*/
     line-height: 1.3em;
     clear: both;
+    padding: 10px;
+
 }
 
-.box_right{
+.my_massege_box{
     color: #fff;/*テキストを白にする*/
     background: #13178E;
     border: 2px solid #13178E;
-    border-radius: 30px 30px 0px 30px;/*右下だけ尖らせて吹き出し感を出す*/
-    margin-left: 50px;/*右側の発言だとわかる様に、吹き出し左側に隙間を入れる*/
+    border-radius: 30px 30px 0px 30px;/*右下だけ尖らせて吹き出し感を出す */
+    margin: 0px 10px 10px 10px;
     float: right;/*吹き出しをbms_messagesに対して右寄せ*/
+    line-height: 1.3em;
+    clear: both;
+    padding: 10px;
+}
+
+.myuser_name {
+    float: right;/*吹き出しをbms_messagesに対して右寄せ*/
+    margin: 10px 10px 0px 10px;
     line-height: 1.3em;
     clear: both;
 }
 
+.otheruser_name {
+    float: left;/*吹き出しをbms_messagesに対して左寄せ*/
+    line-height: 1.3em;
+    margin: 10px 10px 0px 10px;
+    clear: both;
+}
 
 /* テキストエリア、送信ボタン④ */
 #chat_input {

@@ -2,31 +2,42 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="../static/css/chatroom.css">
+  <link rel="stylesheet" href="{{url_for('static',filename='css/chatroom.css')}}">
   <title>Chat</title>
 </head>
 <body>
   <header>
     <div id="chat_header">
-      <!--ステータス-->
       <a class="chat_return_link" href="https://saruwakakun.com/">
-          <img src="../static/img/ruturn_button.png" alt="search" width="30" height="30" >
+          <img src="img/ruturn_button.png" alt="search" width="30" height="30" >
       </a> 
-      <div id="room_name">room1</div>
+      <div id="room_name">{{ roomname }}</div>
     </div>
   </header>
-  <!-- 青い背景色になってるチャットアプリの画面 -->
-  <div id="chat_message_area"> <!-- このjs用idは使っていない？ -->
-    <ul id="chat_message_text">
-    </ul>
+  <div id="chat_message_area">
+    <div id="chat_message_text">
+        {% if messages|length > 0 %}
+        {% for message in messages %} 
+        {% if message.uid == uid %}
+        <div class="box_right">
+            <p class="my_massege_box">{{ message.message }}</p>
+        </div>
+        {% else %}
+        <div class="box_left">
+            <p class="otheruser_name">{{ message.username }}</p>
+            <p class="other_massege_box">{{ message.message }}</p>
+        </div>
+        {% endif %} {% endfor %} {% else %}
+        <div id="no-message"><p>メッセージが投稿されていません</p></div>
+        {% endif %}
+    </div>
   </div>
   <footer class="chat_input">
-      <textarea id="inputMessage" type="text" class="form_control" placeholder="メッセージを入力してください" autofocus></textarea>
-      <button id="sendBtn" class="btn_primary" type="button">送信</button>
+    <form method="post" >
+      <input type="hidden" name="uid" value="{{ uid }}" />
+      <textarea id="inputMessage" type="text" class="form_control" name="textmessage" placeholder="メッセージを入力してください" autofocus></textarea>
+      <button id="sendBtn" class="btn_primary">送信</button>
+    </form>
   </footer>
-  <script type="text/javascript" src="chatroom.js"></script>
-
 </body>
 </html>
