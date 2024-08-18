@@ -74,7 +74,7 @@ def userLogin():
             if hashPassword != user["password"]:
                 flash('パスワードが間違っています!')
             else:
-                session['uid'] = user["uid"]
+                session['uid'] = user["id"]
                 return redirect('/')
         return redirect('/login')
 
@@ -95,9 +95,16 @@ def index():
         return redirect('/login')   #sesshonがなければログインページへ
     else:
         channels = dbConnect.getChannel()   #Userが所属しているチャネルの一覧のみを表示する
+        print(channels)
         # groups.reverse()  →ここはなくてもいいはず？
     return render_template('index.html', groups=channels)
 
+@app.route('/group/new', methods=['GET'])
+def show_add_group():
+    uid = session.get('uid')
+    if uid is None:
+        return redirect('/login')
+    return render_template('add-channel.html')
 
 # チャンネル（グループ）を追加する処理
 @app.route('/group/new', methods=['POST'])      #どこのURL、ディレクトリで指定しているか？→Frontチームに確認

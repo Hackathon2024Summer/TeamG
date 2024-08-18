@@ -5,12 +5,12 @@ from util.DB import DB
 # このモジュール関係についての調査が必要。Flaskではないモジュールを別途インストールする必要がある？？
 
 class dbConnect:
-    def createUser(uid, firstname, lastname, email, password):
+    def createUser(id, firstname, lastname, email, password):
         try:
             conn = DB.getConnection()
             cur = conn.cursor()
-            sql = "INSERT INTO users (uid, user_name, email, password) VALUES (%s, %s, %s, %s);"
-            cur.execute(sql, (uid, firstname, lastname, email, password))
+            sql = "INSERT INTO users (id, firstname, lastname, email, password) VALUES (%s, %s, %s, %s, %s);"
+            cur.execute(sql, (id, firstname, lastname, email, password))
             conn.commit()
         except Exception as e:
             print(e)
@@ -38,7 +38,7 @@ class dbConnect:
             conn = DB.getConnection()
             cur = conn.cursor()
             # INNER JOIN のSQL分要確認
-            sql = "SELECT * FROM group;"
+            sql = "SELECT * FROM channels;"
             cur.execute(sql)
             groups = cur.fetchall()
             return groups
@@ -53,7 +53,7 @@ class dbConnect:
             conn = DB.getConnection()
             cur = conn.cursor()
             # INNER JOIN のSQL分要確認
-            sql = "SELECT * FROM groups WHERE name=%s;"
+            sql = "SELECT * FROM channels WHERE name=%s;"
             cur.execute(sql, (group_name))
             group = cur.fetchone()
             return group
@@ -67,7 +67,7 @@ class dbConnect:
         try:
             conn = DB.getConnection()
             cur = conn.cursor()
-            sql = "INSERT INTO groups (name) VALUES (%s);"
+            sql = "INSERT INTO channels (name) VALUES (%s);"
             cur.execute(sql, (newgroupName))
             conn.commit()
         except Exception as e:
@@ -80,7 +80,7 @@ class dbConnect:
         try:
             conn = DB.getConnection()
             cur = conn.cursor()
-            sql = "UPDATE groups (groupName) VALUES (%s) WHERE groupId = %s;"
+            sql = "UPDATE channels (groupName) VALUES (%s) WHERE groupId = %s;"
             cur.execute(sql, (groupName, groupId))
             conn.commit()
         except Exception as e:
@@ -108,7 +108,7 @@ class dbConnect:
         try:
             conn = DB.getConnection()
             cur = conn.cursor()
-            sql = "SELECT * FROM groups WHERE gid=%s;"
+            sql = "SELECT * FROM channels WHERE gid=%s;"
             cur.execute(sql, (groupId))
             group = cur.fetchone()
 
@@ -139,7 +139,7 @@ class dbConnect:
         try:
             conn = DB.getConnection()
             cur = conn.cursor()
-            sql = "SELECT MAX(groupId) FROM groups;"
+            sql = "SELECT MAX(groupId) FROM channels;"
             cur.execute(sql)
             maxId = cur.fetchone()
             return maxId
