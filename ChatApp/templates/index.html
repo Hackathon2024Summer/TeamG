@@ -3,56 +3,60 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="stylesheet" href="../static/css/index.css">
     <title>Login</title>
   </head>
   <body>
     <header>
         <img src="../static/img/logo.png" alt="COMPANY" width="200" height="100">
         <div class="header-devide">
-          <div id="loginMessage">JavaScriptが実行されませんでした。管理者にお問い合わせください。</div>
-          <img src="../static/img/logout.png" alt="logout" width="70" height="23">
+          <div id="loginMessage">ようこそ</div>
+          <a href="{{url_for('logout')}}">
+            <img src="../static/img/logout.png" alt="logout" width="70" height="23">
+          </a>
         </div>
-        
     </header>
     <main>
-      <div class="l-leftNav">
-        <div class="l-leftNav__nav">
+      <div class="flexbox">
+        <section class="main">
 
-          <div class="kyc-search-bar">
+          <!-- <div class="kyc-search-bar">
             <img src="../static/img/search.png" alt="search" width="20" height="20">
-            <input class="kyc-search-box" type="text" placeholder="検索" autocomplete="off" size="72">
-          </div>
+            <input class="kyc-search-box" type="text" id="search-input" placeholder="検索" autocomplete="off" size="72">
+          </div> -->
 
-          <div>
-
-            <ul id="getChatroom"{{ channel.name }}>
-              <!-- JavaScript によってリスト項目が追加される -->
+          <!-- app.pyからリストを展開 -->
+          <div id="getChatroom">
+            <ul id="room-list">
+              {% for room in groups %}
+              <li class="room-item"><a href = ></a>{{ room.name }}</li>
+              {% endfor %}
             </ul>
-
           </div>
+        </section>
 
-        </div>
-
-        <div class="bulltinspace">
-          <div class="bulltin-header">
-            <h3>掲示板</h3>
-            <button>掲示板管理</button>
+        <section class="side">
+          <div class="bulltinspace">
+            <div class="bulltin-header">
+              <h3>掲示板</h3>
+              <button>掲示板管理</button>
+            </div>
+            <ul id="bulltinboard">
+              <!-- app.pyからリストを展開 -->
+              {% for bulltin in bulltinlist %}
+              <li class="bulltin-item">{{ bulltin }}</li>
+              {% endfor %}
+            </ul>
           </div>
-          <ul id="bulltinboard">
-            <!-- JavaScript によってリスト項目が追加される -->
-          </ul>
-
-        </div>
-
+        </section>
       </div>
       
       <div class="roomlist-createroom-button">
-        <a href = ./createroom.html>+</a>
+        <a href = "{{url_for('show_add_group')}}">+</a>
       </div>
 
     </main>
 
-    <script src="../static/js/home.js"></script>
+    <script src="../static/js/index.js"></script>
   </body>
 </html>
