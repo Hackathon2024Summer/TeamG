@@ -1,0 +1,102 @@
+@charset "utf-8";
+
+body {
+  font-size: 16px;
+  font-family: 'arial','Hiragino Sans','Meiryo',sans-serif;
+  color: #333333;
+  background-color: #f6f6f6;
+}
+
+header {
+  background-color: white;
+  border-bottom: 2px solid #c6c6c6;
+}
+
+.header-devide{
+  display: flex;
+  justify-content: space-between;
+}
+
+.flex_center {
+  display: flex;
+  justify-content: space-around;
+  line-height: 0em;
+}
+
+.button_margin {
+  margin: 3px;
+}
+
+.form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.lower-main{
+  display: flex;
+  justify-content: center;
+}
+
+.group-name{
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+.group-name label{
+  font-size: 24px;
+}
+
+.groupname-input {
+  width:475px;
+  height: 25px;
+}
+
+h1 {
+  text-align: left;
+  padding: 20px 0px 16px;
+}
+
+
+select {
+  width: 200px;
+}
+
+.field {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+  }
+
+.input_button {
+  margin: 22px 50px 27px;
+  width: 100px;
+}
+
+.delete_button {
+  margin: 0px 50px 30px;
+  width: 100px;
+}
+
+.futor-button {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
+
+.createroom-button{
+  border-radius: 100vh;
+  color: #fff;
+  background-color: #0088ff;
+  border-color: #ffffff00;
+  margin-top: 20px;
+  margin-bottom: 15px;
+  width: 150px;
+  height: 40px;
+}
+
+.createroom-button:hover{
+    color: #fff;
+    background: #0075db;
+}
