@@ -29,7 +29,10 @@
           <div id="getChatroom">
             <ul id="room-list">
               {% for room in groups %}
-              <li class="room-item"><a href = ></a>{{ room.name }}</li>
+              <li class="room-item"><a href="{{url_for(room.id)}}">
+                {{ room.name }}
+                <img src="../static/img/bin.png" alt="チャットルームを削除" class ="bin-icon">
+              </li>
               {% endfor %}
             </ul>
           </div>
@@ -57,6 +60,6 @@
 
     </main>
 
-    <script src="../static/js/index.js"></script>
+    <!-- <script src="../static/js/index.js"></script> -->
   </body>
 </html>

@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="../static/css/index.css">
+  <link rel="stylesheet" href="../static/css/signup.css">
     <title>Sign-up</title>
   </head>
   <body>
@@ -30,10 +30,16 @@
                     <p>Password(確認用)：<input type="password" name="password2" id="signup-password-confirmation-input"></p>
                 </div>
                 <div class="flex_center">
-                    <div class="button_margin">
-                        <button id="signup-btn">Sign Up</button>
-                    </div>
+                    <button class="signup-btn">Sign Up</button>
                 </div>
              </form>
         </div>
     </body>
+
+    <script>
+        let button = document.querySelector(".signup-btn");
+        let form = document.querySelector(".form");
+            button.addEventListener("click", () => {
+                form.innerHTML = `<div class="loading"></div>`;
+            });
+    </script>

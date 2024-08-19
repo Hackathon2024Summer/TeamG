@@ -3,18 +3,12 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="stylesheet" href="../static/css/add-channel.css">
     <title>Login</title>
   </head>
   <body>
     <header>
         <img src="../static/img/logo.png" alt="COMPANY" width="200" height="100">
-        <div id="loginMessage">JavaScriptが実行されませんでした。管理者にお問い合わせください。</div>
-
-        <script>
-          let username = "testuser"; //定義されていないと実行されない
-          document.getElementById('loginMessage').textContent = `${username}さん、お仕事お疲れ様です。`;
-        </script>
     </header>
 
     <main>
@@ -29,8 +23,12 @@
           />
         </div>
         <div class="futor-button">
-          <button class="createroom-button">グループ作成</button>
-          <a href = "{{url_for('index')}}">キャンセル</button>
+          <div>
+            <button class="createroom-button">グループ作成</button>
+          </div>
+          <div>
+            <a href = "{{url_for('index')}}">キャンセル</button>
+            </div>
         </div>
       </form>
     </main>
