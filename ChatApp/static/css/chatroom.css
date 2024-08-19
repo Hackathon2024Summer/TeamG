@@ -2,7 +2,7 @@
     height:590px;
     width: 100%;
 }
-/* ヘッダー部分② */
+/* ヘッダー部分 */
 #chat_header {
     padding: 6px;
     font-size: 23px;
@@ -14,7 +14,7 @@
 #room_name{
     margin: auto;
 }
-/* タイムライン部分③ */
+/* タイムライン部 */
 #chat_message_text {
     overflow: auto;/* スクロールを効かせつつ、メッセージがタイムラインの外に出ないようにする */
     height:99%;/*テキストエリアが下に張り付く様にする*/
@@ -27,8 +27,8 @@
     background: #fff;
     border: 2px solid #13178E;
     border-radius: 30px 30px 30px 0px;/*左下だけ尖らせて吹き出し感を出す*/
-    margin: 0px 10px 10px 10px;
-    float: left;/*吹き出しをbms_messagesに対して左寄せ*/
+    margin: 5px 10px 10px 10px;
+    float: left;
     line-height: 1.3em;
     clear: both;
     padding: 10px;
@@ -40,28 +40,28 @@
     background: #13178E;
     border: 2px solid #13178E;
     border-radius: 30px 30px 0px 30px;/*右下だけ尖らせて吹き出し感を出す */
-    margin: 0px 10px 10px 10px;
-    float: right;/*吹き出しをbms_messagesに対して右寄せ*/
+    margin: 5px 10px 10px 10px;
+    float: right;
     line-height: 1.3em;
     clear: both;
     padding: 10px;
 }
 
 .myuser_name {
-    float: right;/*吹き出しをbms_messagesに対して右寄せ*/
+    float: right;
     margin: 10px 10px 0px 10px;
     line-height: 1.3em;
     clear: both;
 }
 
 .otheruser_name {
-    float: left;/*吹き出しをbms_messagesに対して左寄せ*/
+    float: left;
     line-height: 1.3em;
     margin: 10px 10px 0px 10px;
     clear: both;
 }
 
-/* テキストエリア、送信ボタン④ */
+/* テキストエリア、送信ボタン */
 #chat_input {
     background-color:#eee;/*タイムラインの色と同じにする*/
     border-right: 1px solid #ddd;
@@ -79,7 +79,7 @@
         border-radius: 4px;/*角丸*/
         text-align: left;/*文字を左寄せ*/
         box-shadow: 2px 2px 4px 0px rgba(0,0,0,0.2) inset;/*内側に影を入れてテキストエリアらしくした*/
-        box-sizing: border-box;/*paddingとborderの要素の高さと幅の影響をなくす（要素に高さと幅を含める）*/
+        box-sizing: border-box;
 
     }
     #sendBtn {
@@ -87,14 +87,14 @@
         height: 48px;
         font-size: 16px;
         line-height: 3em;
-        float: right;/*bms_sendに対して右寄せ*/
+        float: right;
         color: #fff;
         font-weight: bold;
         background: #bcbcbc;
         text-align: center;/*文字をボタン中央に表示*/
         border: 1px solid #bbb;
         border-radius: 4px;/*角丸*/
-        box-sizing: border-box;/*paddingとborderの要素の高さと幅の影響をなくす（要素に高さと幅を含める）*/
+        box-sizing: border-box;/
     }
     #sendBtn:hover {
         background: #13178E; /*マウスポインタを当てた時にアクティブな色になる*/

@@ -8,23 +8,25 @@
 <body>
   <header>
     <div id="chat_header">
-      <a class="chat_return_link" href="https://saruwakakun.com/">
-          <img src="img/ruturn_button.png" alt="search" width="30" height="30" >
+      <a class="chat_return_link" href="{{url_for('index')}}">
+          <img src="../static/img/ruturn_button.png" alt="search" width="30" height="30" >
       </a> 
-      <div id="room_name">{{ roomname }}</div>
+      <div id="room_name">{{ channel.name }}</div>
     </div>
   </header>
   <div id="chat_message_area">
     <div id="chat_message_text">
         {% if messages|length > 0 %}
         {% for message in messages %} 
+        <!-- <p>message.uid >>> {{message.uid}}</p>
+        <p>uid >>> {{uid}}</p> -->
         {% if message.uid == uid %}
-        <div class="box_right">
+        <div>
             <p class="my_massege_box">{{ message.message }}</p>
         </div>
         {% else %}
-        <div class="box_left">
-            <p class="otheruser_name">{{ message.username }}</p>
+        <div>
+            <p class="otheruser_name"><span>{{message.lastname}}</span><span>{{message.firstname}}</span></p>
             <p class="other_massege_box">{{ message.message }}</p>
         </div>
         {% endif %} {% endfor %} {% else %}
@@ -33,9 +35,9 @@
     </div>
   </div>
   <footer class="chat_input">
-    <form method="post" >
-      <input type="hidden" name="uid" value="{{ uid }}" />
-      <textarea id="inputMessage" type="text" class="form_control" name="textmessage" placeholder="メッセージを入力してください" autofocus></textarea>
+    <form method="post" action="/message/create" >
+      <input type="hidden" name="cid" value="{{ channel.id }}" />
+      <textarea id="inputMessage" type="text" class="form_control" name="message" placeholder="メッセージを入力してください" autofocus></textarea>
       <button id="sendBtn" class="btn_primary">送信</button>
     </form>
   </footer>

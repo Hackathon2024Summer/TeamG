@@ -27,19 +27,19 @@ for (let i = 0; i < roomlist.length; i++) {
     // editLink.appendChild(editIcon);
     // eachRoom.appendChild(editLink);
 
-    // const deleteIcon = document.createElement('img');
-    // deleteIcon.src = '../static/img/bin.png'; // 画像パス
-    // deleteIcon.alt = 'delete'; // 代替テキスト
-    // deleteIcon.width = 20; // 横サイズ（px）
-    // deleteIcon.height = 20; // 縦サイズ（px']);
-    // deleteIcon.addEventListener('click', function() {
-    //     const confirmation = confirm (`「${roomlist[i].textContent}」を本当に削除しますか？`);
-    //     if (confirmation) {
-    //         eachRoom.remove();
-    //         console.log(`「${roomlist[i].textContent}」は削除されました。`);
-    //     }
-    // });
-    // eachRoom.appendChild(deleteIcon);
+    const deleteIcon = document.createElement('img');
+    deleteIcon.src = '../static/img/bin.png'; // 画像パス
+    deleteIcon.alt = 'delete'; // 代替テキスト
+    deleteIcon.width = 20; // 横サイズ（px）
+    deleteIcon.height = 20; // 縦サイズ（px']);
+    deleteIcon.addEventListener('click', function() {
+        const confirmation = confirm (`「${roomlist[i].textContent}」を本当に削除しますか？`);
+        if (confirmation) {
+            eachRoom.remove();
+            console.log(`「${roomlist[i].textContent}」は削除されました。`);
+        }
+    });
+    eachRoom.appendChild(deleteIcon);
 
     document.getElementById('getChatroom').appendChild(eachRoom);
 }

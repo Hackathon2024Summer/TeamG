@@ -65,6 +65,7 @@ def userLogin():
 
     if email == '' or password == '':
         flash('空のフォームがあるようです')
+
     else:
         user = dbConnect.getUser(email)
         if user is None:
@@ -76,7 +77,7 @@ def userLogin():
             else:
                 session['uid'] = user["id"]
                 return redirect('/')
-        return redirect('/login')
+    return redirect('/login')
 
 # ログアウト
 @app.route('/logout')
@@ -95,9 +96,22 @@ def index():
         return redirect('/login')   #sesshonがなければログインページへ
     else:
         channels = dbConnect.getChannel()   #Userが所属しているチャネルの一覧のみを表示する
-        print(channels)
+        #print(channels)
         # groups.reverse()  →ここはなくてもいいはず？
-    return render_template('index.html', groups=channels)
+    return render_template('index.html', channels=channels, uid=uid)
+
+@app.route('/group/delete/<cid>') 
+def deleteChannel(cid):
+    uid = session.get('uid')
+    if uid is None:
+        return redirect('/login')
+    else:
+        channel = dbConnect.getChannelById(cid)
+        if channel['uid'] != uid:
+            return redirect('/')
+        else:
+            dbConnect.deleteChannel(cid)
+            return redirect('/')
 
 @app.route('/group/new', methods=['GET'])
 def show_add_group():
@@ -115,12 +129,33 @@ def add_group():
     newGroupName = request.form.get('groupName')   #グループ名のnameが何かを確認
     group = dbConnect.getGroupByName(newGroupName)  #既に登録されたグループ名が存在しないか確認
     if group == None: 
-        dbConnect.addGroup(newGroupName)
+        dbConnect.addGroup(newGroupName, uid)
         return redirect('/')
     else:
         error = '既に同じ名前のチャンネルが存在しています'
         return render_template('error.html', error_message=error)
 
+@app.route('/detail/<cid>')
+def detail_channel(cid):
+    id = session.get('uid')
+    if id is None:
+        return redirect('/login')
+    messages = dbConnect.getMessagesByChannel(cid)
+    channel = dbConnect.getChannelById(cid)
+    #print("messages=", messages)
+    return render_template('chatroom.html', messages=messages, uid=id, channel=channel)
+
+@app.route('/message/create', methods=['POST'])
+def add_message():
+    id = session.get('uid')
+    if id is None:
+        return redirect('/login')
+    message = request.form.get('message')
+    cid = request.form.get('cid')
+    print("cid=", cid)
+    if message:
+        dbConnect.createMessage(id, cid, message)
+    return redirect('/detail/{cid}'.format(cid=cid))
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0", debug=True)

@@ -12,7 +12,9 @@ CREATE TABLE users (
 
 CREATE TABLE channels (
     id int AUTO_INCREMENT PRIMARY KEY,
-    name varchar(255) NOT NULL
+    name varchar(255) NOT NULL,
+    uid varchar(255) NOT NULL,
+    FOREIGN KEY (uid) REFERENCES users(id)
 );
 
 CREATE TABLE messages (

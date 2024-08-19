@@ -63,12 +63,12 @@ class dbConnect:
         finally:
             cur.close()
     
-    def addGroup(newgroupName):
+    def addGroup(newgroupName, uid):
         try:
             conn = DB.getConnection()
             cur = conn.cursor()
-            sql = "INSERT INTO channels (name) VALUES (%s);"
-            cur.execute(sql, (newgroupName))
+            sql = "INSERT INTO channels (name, uid) VALUES (%s, %s);"
+            cur.execute(sql, (newgroupName, uid))
             conn.commit()
         except Exception as e:
             print(e)
@@ -149,15 +149,58 @@ class dbConnect:
         finally:
             cur.close()
 
-    def deleteUsersGroupByGroupId(groupId):
+    def deleteChannel(cid):
         try:
             conn = DB.getConnection()
             cur = conn.cursor()
-            sql = "DELETE * FROM userGroup WHERE groupId = %s;"
-            cur.execute(sql)
+            sql = "DELETE FROM channels WHERE id = %s;"
+            cur.execute(sql, (cid))
             conn.commit()
         except Exception as e:
             print(e)
             abort(500)
         finally:
             cur.close()
+
+    def getChannelById(cid):
+        try:
+            conn = DB.getConnection()
+            cur = conn.cursor()
+            sql = "SELECT * FROM channels WHERE id=%s;"
+            cur.execute(sql, (cid))
+            channel = cur.fetchone()
+            return channel
+        except Exception as e:
+            print(e)
+            abort(500)
+        finally:
+            cur.close()
+
+    def getMessagesByChannel(cid):
+        try:
+            conn = DB.getConnection()
+            cur = conn.cursor()
+            sql = "SELECT messages.id, message, messages.uid, users.firstname, users.lastname FROM messages INNER JOIN users ON messages.uid = users.id WHERE cid = %s ORDER BY messages.id ASC;"
+            cur.execute(sql, (cid))
+            messages = cur.fetchall()
+            return messages
+        except Exception as e:
+            print(e)
+            abort(500)
+        finally:
+            cur.close()
+
+    def createMessage(uid, cid, message):
+        try:
+            conn = DB.getConnection()
+            cur = conn.cursor()
+            sql = "INSERT INTO messages(uid, cid, message) VALUES(%s, %s, %s)"
+            cur.execute(sql, (uid, cid, message))
+            conn.commit()
+        except Exception as e:
+            print(e)
+            abort(500)
+        finally:
+            cur.close()
+
+    

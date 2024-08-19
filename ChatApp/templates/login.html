@@ -30,14 +30,26 @@
                     </div>
                 </div>
              </form>
+
+            {% with messages=get_flashed_messages() %} 
+                {% if messages %} 
+                    <ul>
+                        {% for message in messages %}
+                            <li>
+                                {{message}}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            {% endwith %}
         </div>
 
-
     </body>
-    <script>
+
+    <!-- <script>
     let button = document.querySelector(".login-btn");
     let form = document.querySelector(".form");
         button.addEventListener("click", () => {
             form.innerHTML = `<div class="loading"></div>`;
         });
-    </script>
+    </script> -->
