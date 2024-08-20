@@ -185,7 +185,7 @@ select {
 
 .roomlist-createroom-button {
   position: fixed;
-  font-size: 50px;    /* Font size */
+  font-size: 65px;    /* Font size */
   font-weight: 900;   /* Font weight */
   color: #ffffff;     /* Text color */
   bottom: 24px;
@@ -212,7 +212,7 @@ select {
 
 .roomlist-createroom-button a:hover{/* マウスオーバー時に色変更*/
   position: fixed;
-  font-size: 50px;    /* Font size */
+  font-size: 65px;    /* Font size */
   font-weight: 900;   /* Font weight */
   color: #ffffff;     /* Text color */
   bottom: 24px;

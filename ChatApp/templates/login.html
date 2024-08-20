@@ -36,7 +36,7 @@
             {% with messages=get_flashed_messages() %} 
                 {% if messages %} 
                     {% for message in messages %}
-                    <img src="../static/img/warning.png" alt="チャンネルを削除" class="warning-icon">{{message}}
+                    <img src="../static/img/warning.png" class="warning-icon">{{message}}
                     {% endfor %}
                 {% endif %}
             {% endwith %}
