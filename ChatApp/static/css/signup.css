@@ -46,6 +46,18 @@ header {
     background: #0075db;
 }
 
+.flash_message{
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+  color: red;
+}
+
+.warning-icon{
+  width: 20px;
+  height: 20px
+}
+
 
 @keyframes spin {
   0% {

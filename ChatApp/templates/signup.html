@@ -17,8 +17,8 @@
         <div class="form">
             <form method="POST">
                 <div class="flex_center">
-                    <p>姓：<input type="text" name="lastname" id="signup-lastname-input" size="14"></p>
-                    <p>名：<input type="text" name="firstname" id="signup-firstname-input" size="14"></p>
+                    <p>姓：<input type="text" name="lastname" id="signup-lastname-input" size="12"></p>
+                    <p>　名：<input type="text" name="firstname" id="signup-firstname-input" size="12"></p>
                 </div>
                 <div class="flex_center">
                     <p>Email：<input type="text" name="email" id="signup-email-input" size="32"></p>
@@ -34,6 +34,17 @@
                 </div>
              </form>
         </div>
+        
+        <div class="flash_message">
+            {% with messages=get_flashed_messages() %} 
+                {% if messages %} 
+                    {% for message in messages %}
+                    <img src="../static/img/warning.png" alt="チャンネルを削除" class="warning-icon">{{message}}
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+        </div>
+
     </body>
 
     <!-- <script>

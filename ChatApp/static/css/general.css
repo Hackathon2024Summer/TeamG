@@ -17,8 +17,21 @@ header {
   justify-content: space-between;
 }
 
-.flex_center {
+.flex_center_horizontal {
+  margin-top: 30px;
   display: flex;
-  justify-content: space-around;
-  line-height: 0em;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex_center_virtical {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+}
+
+.error-icon {
+  width: 100px;
+  height: 100px;
+  margin-right: 20px;
 }

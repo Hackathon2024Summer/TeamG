@@ -13,9 +13,13 @@
       <img src="../static/img/logo.png" alt="COMPANY" width="200" height="100">
   </header>
 
-  <div>
-    <h3>SORRY</h3>
-    <p>{{ error_message }}</p>
-    <a href="{{ url_for('index') }}">戻る</a>
-  </div>
-</body>
+  </body>
+    <div class="flex_center_horizontal">
+      <img src="../static/img/error.png" class="error-icon">
+      <h1>SORRY!</h1>
+    </div>
+    <div class="flex_center_virtical">
+        <p>{{ error_message }}</p>
+        <a href="{{ url_for('index') }}">戻る</a>
+    </div>
+  </body>
