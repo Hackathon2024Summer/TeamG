@@ -35,6 +35,10 @@
              </form>
         </div>
         
+        <div class="flex_center">
+            <a href="{{ url_for('login') }}">戻る</a>
+        </div>
+
         <div class="flash_message">
             {% with messages=get_flashed_messages() %} 
                 {% if messages %} 
@@ -43,10 +47,6 @@
                     {% endfor %}
                 {% endif %}
             {% endwith %}
-        </div>
-        
-        <div class="flex_center">
-            <a href="{{ url_for('login') }}">戻る</a>
         </div>
 
     </body>

@@ -50,7 +50,7 @@ def userSignup():
             UserId = str(uid)
             session['uid'] = UserId
             return redirect('/')
-        return redirect('/signup')
+    return redirect('/signup')
 
 # ログインページの表示
 @app.route('/login')
