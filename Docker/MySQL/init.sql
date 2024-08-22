@@ -1,5 +1,4 @@
-DROP DATABASE chatapp;
-
+DROP DATABASE IF EXISTS chatapp;
 CREATE DATABASE chatapp;
 USE chatapp;
 
@@ -11,18 +10,19 @@ CREATE TABLE users (
     password varchar(255) NOT NULL
 );
 
--- groupsはMySQLの予約語のためカラムに使用できず、channelsに変更すると作成できた。
 CREATE TABLE channels (
-    id serial PRIMARY KEY,
-    name varchar(255) NOT NULL
+    id int AUTO_INCREMENT PRIMARY KEY,
+    name varchar(255) NOT NULL,
+    uid varchar(255) NOT NULL,
+    FOREIGN KEY (uid) REFERENCES users(id)
 );
 
-
-CREATE TABLE messeages (
-    id serial PRIMARY KEY,
-    messeage text,
-    uid varchar(255) REFERENCES users(id),
-    cid integer REFERENCES channels(id) ON DELETE CASCADE,
-    created_at timestamp not null default current_timestamp
+CREATE TABLE messages (
+    id int AUTO_INCREMENT PRIMARY KEY,
+    message text,
+    uid varchar(255),
+    cid int,
+    created_at timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (uid) REFERENCES users(id),
+    FOREIGN KEY (cid) REFERENCES channels(id) ON DELETE CASCADE
 );
-

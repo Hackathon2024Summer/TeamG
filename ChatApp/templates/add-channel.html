@@ -3,80 +3,34 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="stylesheet" href="../static/css/add-channel.css">
     <title>Login</title>
   </head>
   <body>
     <header>
         <img src="../static/img/logo.png" alt="COMPANY" width="200" height="100">
-        <div id="loginMessage">JavaScriptが実行されませんでした。管理者にお問い合わせください。</div>
-
-        <script>
-          let username = "testuser"; //定義されていないと実行されない
-          document.getElementById('loginMessage').textContent = `${username}さん、お仕事お疲れ様です。`;
-        </script>
     </header>
 
     <main>
-      <form>
-
-
+      <form method="post">
         <div class="group-name">
           <label for="groupname-input">グループ名</label><br>
           <input
             type="text"
-            name="groupname"
+            name="groupName"
             id="groupname-input"
             class="groupname-input"
           />
         </div>
-
-
-        <div class="field">
-
-
+        <div class="futor-button">
           <div>
-            <label for="user-input">追加ユーザー</label><br>
-            <select name="user-list" size="7">
-              
-              <!-- ここは何も無くても大丈夫でした -->
-
-            </select>
+            <button class="createroom-button">グループ作成</button>
           </div>
-
-
           <div>
-            <button class="input_button">←<br>追加</button><br>
-            <button class="delete_button">→<br>削除</button>
-          </div>
-
-
-          <div>
-            <label for="user-all">全ユーザー</label><br>
-            <select name="userall-list" size="5">
-              <option value="user1">Ryo</option>
-              <option value="user2">マツタニ</option>
-              <option value="user3">TN</option>
-              <option value="user4">sakie</option>
-              <option value="user5">せきど</option>
-              <option value="user6">かずき</option>
-            </select>
-          </div>
-
-
+            <a href = "{{url_for('index')}}">キャンセル</button>
+            </div>
         </div>
-
-
       </form>
-
-
-      <div class="futor-button">
-        <button class="createroom-button">グループ作成</button>
-        <button class="cancel-button">キャンセル</button>
-      </div>
-
-
     </main>
-
   </body>
 </html>
